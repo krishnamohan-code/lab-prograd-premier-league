@@ -31,9 +31,9 @@ var formation = [4, 4, 3];
       return null;
     }
     var captain = {
-      forward: form[0],
+      forward: form[2],
       midfield: form[1],
-      defender: form[2]
+      defender: form[0]
   };
   
    
@@ -52,10 +52,11 @@ try {
 
 //Progression 3 - Filter players that debuted in ___ year
 function filterByDebut(year) {
-  let filteredArray = [];
-  let count = 0;
-  for (let i = 0; i < players.length; i++) {
-    if (players[i].debut == year) {
+  var filteredArray = [];
+  var count = 0;
+  for (var i = 0; i < players.length; i++) {
+    if (players[i].debut ==year) 
+    {
       filteredArray[count++] = players[i];
     }
   }
@@ -65,7 +66,7 @@ function filterByDebut(year) {
 //Progression 4 - Filter players that play at the position _______
 function filterByPosition(position) 
 {
-  let fp=[];
+  var fp=[];
   for(var i=0;i<players.length;i++)
   {
     if(players[i].position==position)
@@ -118,18 +119,18 @@ function filterByAwardxTimes(awardName,noOfTimes)
 
 //Progression 7 - Filter players that won ______ award and belong to ______ country
 function  filterByAwardxCountry(awardName,country){
-  var pc = [];
+  var awardcountry = [];
   for(var i=0;i < players.length;i++)
   {
     for(var j=0;j<players[i].awards.length;j++)
     {
       if(players[i].awards[j].name==awardName && players[i].country==country)
       {
-        pc.push(players[i]);
+        awardcountry.push(players[i]);
       }
     }
   }
-  return pc;
+  return awardcountry;
 }
 
 //Progression 8 - Filter players that won atleast ______ awards, belong to ______ team and are younger than ____
@@ -139,7 +140,7 @@ function filterByNoOfAwardsxTeamxAge(noOfAwards,team,age)
   var nofawardsbyteam=[]
   for(var i=0;i<players.length;i++)
   {
-    if((players[i].awards.length>=noOfAwards)&& (players[i].team==team) && (players[i].age<age))
+    if((players[i].awards.length<=noOfAwards)&& (players[i].team==team) && (players[i].age<age))
     {
        nofawardsbyteam.push(players[i])
     }
